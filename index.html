@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raquel Valdez — Vintage Sourcer · Austin, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       RESET & VARIABLES
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FAF8F5;
+      --cream-dark:  #F2EDE7;
+      --brown:       #2C2A28;
+      --brown-mid:   #5A5550;
+      --muted:       #9A9088;
+      --gold:        #B8965A;
+      --gold-light:  #D4B07A;
+      --border:      #DDD8D2;
+      --placeholder: #E8E4DF;
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 52px;
+      transition: background 0.35s, padding 0.35s, box-shadow 0.35s;
+    }
+    #nav.scrolled {
+      background: rgba(250, 248, 245, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 14px 52px;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    #nav.scrolled .nav-logo { color: var(--brown); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    #nav.scrolled .nav-links a { color: var(--muted); }
+    .nav-links a:hover,
+    #nav.scrolled .nav-links a:hover { color: var(--gold); }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero.jpg') center/cover no-repeat;
+      transform: scale(1.04);
+      transition: transform 10s ease;
+    }
+    #hero:hover .hero-bg { transform: scale(1.0); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(28, 23, 18, 0.28) 0%,
+        rgba(28, 23, 18, 0.52) 60%,
+        rgba(28, 23, 18, 0.68) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.8rem, 9.5vw, 7.5rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      line-height: 1.0;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 32px rgba(0,0,0,0.18);
+    }
+    .hero-sub {
+      font-size: 0.73rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 52px;
+    }
+    .btn-hero {
+      display: inline-block;
+      padding: 14px 44px;
+      border: 1px solid rgba(255,255,255,0.65);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-hero:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.95);
+    }
+
+    /* =========================================================
+       SHARED SECTION STYLES
+    ========================================================= */
+    section { padding: 108px 0; }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      color: var(--brown);
+    }
+
+    /* Fade-in scroll animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    #about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 88px;
+      align-items: center;
+    }
+
+    /* PLACEHOLDER: Swap .about-photo-placeholder for <img> once portrait is ready */
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--placeholder);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      gap: 8px;
+    }
+    .about-photo-placeholder svg {
+      opacity: 0.3;
+      width: 40px; height: 40px;
+    }
+
+    .about-text .section-title { margin-bottom: 22px; }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--brown-mid);
+      margin-bottom: 20px;
+    }
+    .about-text p:last-of-type { margin-bottom: 0; }
+
+    /* PLACEHOLDER: Uncomment stat line when numbers are confirmed */
+    .about-stat {
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       MY FINDS
+    ========================================================= */
+    #finds {
+      background: var(--cream-dark);
+      padding-top: 88px;
+      padding-bottom: 88px;
+    }
+
+    .finds-header {
+      padding: 0 52px;
+      margin-bottom: 14px;
+    }
+    .finds-intro-line {
+      padding: 0 52px;
+      margin-bottom: 64px;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .category-block { margin-bottom: 60px; }
+    .category-block:last-child { margin-bottom: 0; }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 52px;
+      margin-bottom: 22px;
+    }
+    .cat-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 500;
+      white-space: nowrap;
+      color: var(--brown);
+      letter-spacing: 0.02em;
+    }
+    .cat-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* --- CAROUSEL TRACK --- */
+    .carousel-wrap {
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      padding: 6px 52px 28px;
+    }
+    .carousel-wrap::-webkit-scrollbar { display: none; }
+    .carousel-wrap.is-dragging { cursor: grabbing; user-select: none; }
+
+    .carousel-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+    }
+
+    /* --- ITEM CARD --- */
+    .item-card {
+      flex: 0 0 252px;
+      width: 252px;
+      background: #fff;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.09);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 218px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* PLACEHOLDER card image — shown when no photo available yet */
+    .card-ph {
+      width: 100%;
+      height: 218px;
+      background: var(--placeholder);
+      border-bottom: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      gap: 8px;
+    }
+    .card-ph svg { opacity: 0.25; }
+
+    .card-body {
+      padding: 15px 17px 18px;
+    }
+    .card-name {
+      font-family: var(--serif);
+      font-size: 1.0rem;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 5px;
+      line-height: 1.25;
+    }
+    .card-prices {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+    }
+    .price-orig {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .price-sold {
+      font-size: 1.0rem;
+      font-weight: 500;
+      color: var(--brown);
+    }
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+    #services { background: var(--cream); }
+
+    .services-lead {
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 60px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .svc-card {
+      border: 1px solid var(--border);
+      padding: 40px 32px 36px;
+      background: #fff;
+      transition: border-color 0.22s, box-shadow 0.22s;
+    }
+    .svc-card:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 8px 36px rgba(0,0,0,0.055);
+    }
+    .svc-card.highlight { border-color: var(--gold); }
+
+    .svc-tier {
+      font-size: 0.64rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .svc-name {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--brown);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      min-height: 58px;
+    }
+    .svc-pieces {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .svc-price {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--brown);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .svc-price-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .services-custom {
+      text-align: center;
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+    .services-note {
+      text-align: center;
+      font-size: 0.77rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+    .services-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .services-note a:hover { text-decoration: underline; }
+
+    /* =========================================================
+       REVIEWS
+    ========================================================= */
+    #reviews { background: var(--cream-dark); }
+
+    .reviews-wrap {
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+      margin: 0 -52px;
+      padding: 6px 52px 28px;
+    }
+    .reviews-wrap::-webkit-scrollbar { display: none; }
+    .reviews-wrap.is-dragging { cursor: grabbing; user-select: none; }
+
+    .reviews-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+    }
+
+    /* PLACEHOLDER: Replace all .review-card contents with real reviews */
+    .review-card {
+      flex: 0 0 330px;
+      background: #fff;
+      padding: 38px 34px 34px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+    .review-quote {
+      font-family: var(--serif);
+      font-size: 3.6rem;
+      line-height: 0.9;
+      color: var(--gold-light);
+      opacity: 0.55;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .review-body {
+      font-size: 0.88rem;
+      line-height: 1.82;
+      color: var(--brown-mid);
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      margin-bottom: 7px;
+    }
+    .review-author {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    #contact { background: var(--cream); }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 500px;
+      margin-bottom: 56px;
+    }
+
+    .contact-list {
+      max-width: 460px;
+      margin-bottom: 40px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--brown);
+      transition: color 0.2s;
+    }
+    .contact-row:first-child { border-top: 1px solid var(--border); }
+    .contact-row:hover { color: var(--gold); }
+
+    .contact-icon { font-size: 1.15rem; width: 30px; text-align: center; flex-shrink: 0; }
+    .contact-label {
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .contact-row:hover .contact-label { color: var(--gold-light); }
+    .contact-value { font-size: 0.95rem; font-weight: 400; }
+
+    .contact-footnote {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.85;
+      max-width: 420px;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--brown);
+      padding: 52px 0;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 8px;
+    }
+    .footer-tag {
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 26px;
+    }
+    .footer-contact {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 2;
+    }
+    .footer-contact a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--gold-light); }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 960px) {
+      #nav, #nav.scrolled { padding: 16px 24px; }
+      .nav-links { display: none; }
+
+      section { padding: 72px 0; }
+      .container { padding: 0 24px; }
+
+      .finds-header,
+      .finds-intro-line,
+      .cat-header,
+      .carousel-wrap { padding-left: 24px; padding-right: 24px; }
+
+      .reviews-wrap { margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .about-photo-placeholder {
+        aspect-ratio: 1/1;
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .svc-desc { min-height: unset; }
+
+      .item-card { flex: 0 0 210px; width: 210px; }
+      .card-img, .card-ph { height: 186px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { letter-spacing: 0.02em; }
+      .review-card { flex: 0 0 280px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Raquel Valdez</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#finds">Finds</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- =====================================================
+     1. HERO
+===================================================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-name">Raquel Valdez</h1>
+    <p class="hero-sub">Vintage Sourcer &nbsp;·&nbsp; Austin, TX</p>
+    <a href="#contact" class="btn-hero">Work With Me</a>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     2. ABOUT
+===================================================== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade-up">
+
+      <!-- LEFT: Portrait -->
+      <!-- PLACEHOLDER: Replace this div with <img src="images/raquel-portrait.jpg" alt="Raquel Valdez"> once portrait photo is ready. Recommended crop: 4:5, warm-toned, soft background. -->
+      <div class="about-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        Portrait photo<br>coming soon
+      </div>
+
+      <!-- RIGHT: Bio -->
+      <div class="about-text">
+        <span class="eyebrow">About</span>
+        <h2 class="section-title">An eye for what others walk past.</h2>
+        <p>I'm Raquel — a vintage collector based in Austin, TX with an eye for finding exceptional pieces that most people walk right past. I specialize in sourcing high-quality vintage furniture and home goods: the kind that retail for thousands but deserve to be found, loved, and lived with.</p>
+        <p>Whether you're an interior designer building a client's space or simply looking for something one-of-a-kind, I find it for you.</p>
+        <!-- PLACEHOLDER: Uncomment and update with real numbers when confirmed
+        <p class="about-stat">100+ items sold &nbsp;·&nbsp; Trusted by buyers across Texas</p>
+        -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     3. MY FINDS — CATEGORY CAROUSELS
+===================================================== -->
+<section id="finds">
+  <div class="finds-header fade-up">
+    <span class="eyebrow">Past Finds</span>
+    <h2 class="section-title">My Finds</h2>
+  </div>
+  <p class="finds-intro-line fade-up">
+    A selection of past finds — each one sourced, authenticated, and sold at a fraction of its original value.
+  </p>
+
+  <!-- ── SEATING ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Seating</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+
+        <!-- REAL ITEM: Leather Butterfly Chair — photo: images/item-butterfly-chair.jpg -->
+        <div class="item-card">
+          <img src="images/item-butterfly-chair.jpg" alt="Leather Butterfly Chair" class="card-img" style="object-position: center;">
+          <div class="card-body">
+            <div class="card-name">Leather Butterfly Chair</div>
+            <div class="card-prices">
+              <span class="price-orig">$272</span>
+              <span class="price-sold">$85</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL ITEM: Hollywood Regency Curule Bench — photo: images/item-curule-bench.jpg -->
+        <div class="item-card">
+          <img src="images/item-curule-bench.jpg" alt="Hollywood Regency Brass Curule Bench" class="card-img" style="object-position: top;">
+          <div class="card-body">
+            <div class="card-name">Hollywood Regency Bench</div>
+            <div class="card-prices">
+              <span class="price-orig">$200</span>
+              <span class="price-sold">$75</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL ITEM: Carson's Velvet & Brass Armchair — photo: images/item-armchair.jpg -->
+        <div class="item-card">
+          <img src="images/item-armchair.jpg" alt="Carson's Modern Velvet Armchair" class="card-img" style="object-position: top;">
+          <div class="card-body">
+            <div class="card-name">Velvet &amp; Brass Armchair</div>
+            <div class="card-prices">
+              <span class="price-orig">$320</span>
+              <span class="price-sold">$80</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER: Replace with real seating item -->
+        <div class="item-card">
+          <div class="card-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+            <!-- REPLACE with real image -->
+            Seating
+          </div>
+          <div class="card-body">
+            <div class="card-name">Coming Soon</div>
+            <div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER: Replace with real seating item -->
+        <div class="item-card">
+          <div class="card-ph">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+            <!-- REPLACE with real image -->
+            Seating
+          </div>
+          <div class="card-body">
+            <div class="card-name">Coming Soon</div>
+            <div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TABLES ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Tables</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+
+        <!-- REAL ITEM: Chinese Elmwood Altar Table — photo: images/item-altar-table.jpg -->
+        <div class="item-card">
+          <img src="images/item-altar-table.jpg" alt="Chinese Elmwood Altar Table" class="card-img" style="object-position: center;">
+          <div class="card-body">
+            <div class="card-name">Chinese Altar Table</div>
+            <div class="card-prices">
+              <span class="price-orig">$575</span>
+              <span class="price-sold">$390</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER x4: Replace with real tables -->
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Tables</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Tables</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Tables</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Tables</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STORAGE & CABINETS ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Storage &amp; Cabinets</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+
+        <!-- REAL ITEM: Boho Arched Wicker Shelf — photo: images/item-wicker-shelf.jpg -->
+        <div class="item-card">
+          <img src="images/item-wicker-shelf.jpg" alt="Vintage 1970s Boho Arched Wicker Shelf" class="card-img" style="object-position: top center;">
+          <div class="card-body">
+            <div class="card-name">Boho Arched Wicker Shelf</div>
+            <div class="card-prices">
+              <span class="price-orig">$170</span>
+              <span class="price-sold">$160</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL ITEM: Mid-Century Bassett Dresser — photo: images/item-dresser.jpg -->
+        <div class="item-card">
+          <img src="images/item-dresser.jpg" alt="Vintage Mid-Century Bassett Dresser" class="card-img" style="object-position: center top;">
+          <div class="card-body">
+            <div class="card-name">Mid-Century Bassett Dresser</div>
+            <div class="card-prices">
+              <span class="price-orig">$195</span>
+              <span class="price-sold">$170</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- REAL ITEM: Artisan Collector's Cabinet — photo: images/item-collector-cabinet.jpg -->
+        <div class="item-card">
+          <img src="images/item-collector-cabinet.jpg" alt="Artisan Solid Wood Collector's Cabinet" class="card-img" style="object-position: center;">
+          <div class="card-body">
+            <div class="card-name">Artisan Collector's Cabinet</div>
+            <div class="card-prices">
+              <span class="price-orig">$370</span>
+              <span class="price-sold">$340</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER x2 -->
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Storage</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg><!-- REPLACE -->Storage</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIGHTING ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Lighting</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+        <!-- PLACEHOLDER x5: Replace all with real lighting items -->
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 1 7 7c0 3-1.8 5.5-4.5 6.6V18H9.5v-2.4C6.8 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M9.5 22h5"/></svg><!-- REPLACE -->Lighting</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 1 7 7c0 3-1.8 5.5-4.5 6.6V18H9.5v-2.4C6.8 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M9.5 22h5"/></svg><!-- REPLACE -->Lighting</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 1 7 7c0 3-1.8 5.5-4.5 6.6V18H9.5v-2.4C6.8 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M9.5 22h5"/></svg><!-- REPLACE -->Lighting</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 1 7 7c0 3-1.8 5.5-4.5 6.6V18H9.5v-2.4C6.8 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M9.5 22h5"/></svg><!-- REPLACE -->Lighting</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a7 7 0 0 1 7 7c0 3-1.8 5.5-4.5 6.6V18H9.5v-2.4C6.8 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><path d="M9.5 22h5"/></svg><!-- REPLACE -->Lighting</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ART ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Art</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+
+        <!-- REAL ITEM: Stained Glass Floral Panel — photo: images/item-stained-glass.jpg -->
+        <div class="item-card">
+          <img src="images/item-stained-glass.jpg" alt="Framed Stained Glass Plum Floral Panel" class="card-img" style="object-position: center;">
+          <div class="card-body">
+            <div class="card-name">Stained Glass Floral Panel</div>
+            <div class="card-prices">
+              <!-- No original retail documented for this piece -->
+              <span class="price-sold">$145</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER x4 -->
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg><!-- REPLACE -->Art</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg><!-- REPLACE -->Art</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg><!-- REPLACE -->Art</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg><!-- REPLACE -->Art</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DECORATIVE OBJECTS ── -->
+  <div class="category-block fade-up">
+    <div class="cat-header">
+      <span class="cat-title">Decorative Objects</span>
+      <div class="cat-rule"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-track">
+
+        <!-- REAL ITEM: Chinoiserie Mother of Pearl Room Divider — photo: images/item-room-divider.jpg -->
+        <div class="item-card">
+          <img src="images/item-room-divider.jpg" alt="Chinoiserie Mother of Pearl Room Divider" class="card-img" style="object-position: top center;">
+          <div class="card-body">
+            <div class="card-name">Chinoiserie Room Divider</div>
+            <div class="card-prices">
+              <span class="price-orig">$300</span>
+              <span class="price-sold">$160</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER x4 -->
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><!-- REPLACE -->Decorative</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><!-- REPLACE -->Decorative</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><!-- REPLACE -->Decorative</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+        <div class="item-card"><div class="card-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><!-- REPLACE -->Decorative</div><div class="card-body"><div class="card-name">Coming Soon</div><div class="card-prices"><span class="price-orig">—</span><span class="price-sold">—</span></div></div></div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     4. SERVICES & PRICING
+===================================================== -->
+<section id="services">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Sourcing Services</span>
+      <h2 class="section-title">I find the pieces.<br>You design the space.</h2>
+      <p class="services-lead">Flat-fee sourcing for interior designers and individual buyers — transparent, simple, and built around your project.</p>
+    </div>
+
+    <div class="services-grid fade-up">
+
+      <!-- Starter -->
+      <div class="svc-card">
+        <div class="svc-tier">Starter</div>
+        <div class="svc-name">One Room,<br>One Vibe</div>
+        <div class="svc-desc">A few key pieces for a single vignette or room accent. Great for filling a gap or anchoring a moment in a space.</div>
+        <div class="svc-pieces">1–3 pieces</div>
+        <div class="svc-price">$250</div>
+        <div class="svc-price-sub">~$100 per piece</div>
+      </div>
+
+      <!-- Room (highlighted) -->
+      <div class="svc-card highlight">
+        <div class="svc-tier">Room</div>
+        <div class="svc-name">Full Room<br>Sourcing</div>
+        <div class="svc-desc">Comprehensive sourcing for a complete room — coordinated pieces, consistent aesthetic, one flat fee.</div>
+        <div class="svc-pieces">4–10 pieces</div>
+        <div class="svc-price">$550</div>
+        <div class="svc-price-sub">~$70 per piece</div>
+      </div>
+
+      <!-- Project -->
+      <div class="svc-card">
+        <div class="svc-tier">Project</div>
+        <div class="svc-name">Full Project<br>Sourcing</div>
+        <div class="svc-desc">Ongoing sourcing across a full home or large project. A consistent partner from first walk-through to final install.</div>
+        <div class="svc-pieces">10+ pieces</div>
+        <div class="svc-price">$1,200<span style="font-size:1.4rem; color:var(--muted);">+</span></div>
+        <div class="svc-price-sub">~$60 per piece</div>
+      </div>
+
+    </div>
+
+    <p class="services-custom fade-up">Custom arrangements always welcome.</p>
+    <p class="services-note fade-up">
+      All sourcing fees are separate from cost of goods, which are passed through at cost.
+      Not sure which fits your project? <a href="#contact">Let's talk.</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     5. REVIEWS
+===================================================== -->
+<section id="reviews">
+  <div class="container" style="padding-right: 0;">
+    <div class="fade-up" style="padding-right: 52px;">
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="section-title">What People Are Saying</h2>
+    </div>
+
+    <!-- PLACEHOLDER: Replace all review cards below with real reviews from Raquel's buyers/designers -->
+    <div class="reviews-wrap fade-up">
+      <div class="reviews-track">
+
+        <!-- PLACEHOLDER review 1 — REPLACE with real review -->
+        <div class="review-card">
+          <span class="review-quote">"</span>
+          <p class="review-body">Raquel found three pieces for my client's living room that I never would have tracked down on my own. The quality was exceptional and the price was unbelievable.</p>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">— A. M. &nbsp;·&nbsp; Interior Designer, Austin</div>
+        </div>
+
+        <!-- PLACEHOLDER review 2 — REPLACE with real review -->
+        <div class="review-card">
+          <span class="review-quote">"</span>
+          <p class="review-body">She has an eye I genuinely haven't seen before. Everything she sources feels considered. My clients always ask where the vintage pieces came from.</p>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">— M. T. &nbsp;·&nbsp; Interior Designer</div>
+        </div>
+
+        <!-- PLACEHOLDER review 3 — REPLACE with real review -->
+        <div class="review-card">
+          <span class="review-quote">"</span>
+          <p class="review-body">I bought a mid-century dresser through Raquel and it was exactly as described — gorgeous, solid, and a fraction of what I'd pay anywhere else.</p>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">— J. R. &nbsp;·&nbsp; Austin, TX</div>
+        </div>
+
+        <!-- PLACEHOLDER review 4 — REPLACE with real review -->
+        <div class="review-card">
+          <span class="review-quote">"</span>
+          <p class="review-body">Working with Raquel on a full project was seamless. She understood the brief right away and came back with pieces that felt like they were made for the space.</p>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">— S. K. &nbsp;·&nbsp; Interior Designer</div>
+        </div>
+
+        <!-- PLACEHOLDER review 5 — REPLACE with real review -->
+        <div class="review-card">
+          <span class="review-quote">"</span>
+          <p class="review-body">I've bought from Raquel twice now and both pieces have become the focal points of their rooms. She really knows what she's doing.</p>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-author">— C. L. &nbsp;·&nbsp; Austin, TX</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     6. CONTACT
+===================================================== -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-up">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="contact-sub">Whether you're interested in a sourcing package, want to discuss something custom, or just want to talk vintage — I'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-list fade-up">
+
+      <a class="contact-row" href="sms:9563343956">
+        <span class="contact-icon">📱</span>
+        <div>
+          <div class="contact-label">Text or Call</div>
+          <div class="contact-value">(956) 334-3956</div>
+        </div>
+      </a>
+
+      <a class="contact-row" href="mailto:raquelvz@hotmail.co.uk">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">raquelvz@hotmail.co.uk</div>
+        </div>
+      </a>
+
+      <!-- PLACEHOLDER: Replace href="#" with Raquel's actual Facebook Marketplace profile URL -->
+      <a class="contact-row" href="#" onclick="return false;" style="cursor: default; opacity: 0.6;">
+        <span class="contact-icon">🔗</span>
+        <div>
+          <div class="contact-label">Facebook Marketplace</div>
+          <div class="contact-value" style="color: var(--muted); font-size: 0.85rem;">Link coming soon</div>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="contact-footnote fade-up">
+      Feel free to reach out about any of the packages above, a custom arrangement, or a specific piece you're looking for.
+    </p>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     7. FOOTER
+===================================================== -->
+<footer>
+  <div class="container">
+    <div class="footer-name">Raquel Valdez</div>
+    <div class="footer-tag">Vintage Sourcer &nbsp;·&nbsp; Austin, TX</div>
+    <div class="footer-contact">
+      <a href="mailto:raquelvz@hotmail.co.uk">raquelvz@hotmail.co.uk</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="sms:9563343956">(956) 334-3956</a>
+      <!-- PLACEHOLDER: Facebook Marketplace link — uncomment once URL is available
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="[FACEBOOK_MARKETPLACE_URL]" target="_blank" rel="noopener">Facebook Marketplace</a>
+      -->
+    </div>
+  </div>
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+<script>
+  // ── Sticky nav ───────────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  // ── Fade-up on scroll ────────────────────────────────
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // ── Drag-to-scroll + touch carousels ─────────────────
+  document.querySelectorAll('.carousel-wrap, .reviews-wrap').forEach(track => {
+    let down = false, startX = 0, scrollStart = 0;
+
+    track.addEventListener('mousedown', e => {
+      down = true;
+      track.classList.add('is-dragging');
+      startX = e.pageX - track.offsetLeft;
+      scrollStart = track.scrollLeft;
+    });
+    const endDrag = () => { down = false; track.classList.remove('is-dragging'); };
+    track.addEventListener('mouseleave', endDrag);
+    track.addEventListener('mouseup',   endDrag);
+    track.addEventListener('mousemove', e => {
+      if (!down) return;
+      e.preventDefault();
+      const dx = (e.pageX - track.offsetLeft) - startX;
+      track.scrollLeft = scrollStart - dx * 1.4;
+    });
+
+    // Touch swipe
+    let tx = 0, ts = 0;
+    track.addEventListener('touchstart', e => {
+      tx = e.touches[0].pageX;
+      ts = track.scrollLeft;
+    }, { passive: true });
+    track.addEventListener('touchmove', e => {
+      const dx = e.touches[0].pageX - tx;
+      track.scrollLeft = ts - dx * 1.1;
+    }, { passive: true });
+  });
+</script>
+
+</body>
+</html>
