@@ -3,3 +3,7 @@ furniture-pics/
 IMG_*.JPEG
 IMG_*.jpg
 IMG_*.jpeg
+
+# macOS system files
+.DS_Store
+**/.DS_Store
